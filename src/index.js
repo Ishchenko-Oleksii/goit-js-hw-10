@@ -4,8 +4,6 @@ import debounce from 'lodash.debounce';
 import API from './fetchCountries';
 
 
-
-
 const DEBOUNCE_DELAY = 300;
 
 const input = document.getElementById('search-box');
@@ -27,7 +25,7 @@ function createMarkup(arr) {
     const markupList = arr.map(
       ({ name: { official }, flags: { svg } }) =>
         `<li>
-  <img src="${svg}" alt="${official}" width="25px" height="15px">
+  <img src="${svg}" alt="${official}" width="60px" height="40px">
   <p>${official}</p>
   </li>`
     );
@@ -35,7 +33,7 @@ function createMarkup(arr) {
     const markupCountry = arr.map(
       ({ name: { official }, flags: { svg }, capital, population, languages }) =>
         `<div>
-  <img src="${svg}" alt="${official}" width="40px" height="25px">
+  <img src="${svg}" alt="${official}" width="60px" height="40px">
   <h2>${official}</h2>
   </div>
   <ul>
@@ -45,12 +43,12 @@ function createMarkup(arr) {
   </ul>`
     );
   
-    if (markupList.length > 10) {
+    if (markupList.length > 15) {
       removeInfo();
       removeList();
       onToMuchResults();
     }
-    if (markupList.length > 1 && markupList.length < 10) {
+    if (markupList.length > 1 && markupList.length < 15) {
       removeInfo();
       list.innerHTML = markupList.join('');
     }
